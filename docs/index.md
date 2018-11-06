@@ -23,17 +23,17 @@ The function has an extra variable C than standard GANs, which denotes categorie
 
 #### [Adversarial Sample Generation](https://clojia.github.io/independent-research/2018-10-IR-Open-Set-by-Adversarial-Sample-Generation)
 ASG also generates "unkown" samples, which are close to "known" samples, different from GANs minmax strategy, ASG generated samples who are:
-1. close to the seen class data
+1.close to the seen class data
 
 <img src="../../independent-research/images/ASG_P1.png" width="500"> 
 
-2. scattered around the seen/unseen boundary
+2.scattered around the seen/unseen boundary
 
 <img src="../../independent-research/images/ASG_P2.png" width="500"> 
 
 Hence in general,
 
-<img src="../../independent-research/images/ASG_P1_P2.png" width="500"> 
+<img src="../../independent-research/images/argmin_P1_P2.png" width="500"> 
 
 In the prediction stage, for a test instance x, if all "known" classifier are negative, x is predicted as "unkown". Otherwise, x is predicted as the class with highest confidence.
 
