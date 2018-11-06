@@ -25,15 +25,15 @@ The function has an extra variable C than standard GANs, which denotes categorie
 ASG also generates "unkown" samples, which are close to "known" samples, different from GANs minmax strategy, ASG generated samples who are:
 1.close to the seen class data
 
-<img src="../../independent-research/images/ASG_P1.png" width="300"> 
+<img src="../../independent-research/images/ASG_P1.png" width="400"> 
 
 2.scattered around the seen/unseen boundary
 
-<img src="../../independent-research/images/ASG_P2.png" width="300"> 
+<img src="../../independent-research/images/ASG_P2.png" width="400"> 
 
 Hence in general,
 
-<img src="../../independent-research/images/argmin_P1_P2.png" width="300"> 
+<img src="../../independent-research/images/argmin_P1_P2.png" width="400"> 
 
 In the prediction stage, for a test instance x, if all "known" classifier are negative, x is predicted as "unkown". Otherwise, x is predicted as the class with highest confidence.
 
@@ -51,6 +51,6 @@ Counterfactual image generation generates "unknown" samples around "known" sampl
 The architecture consists of three components: an encoder network E(x), a generator G(z) and a discriminator D. 
 And the goal is to generate synthetic images closed to the real image but not in any k classes:
 
-<img src="../../independent-research/images/Counterfactual-Z*.png" width="300"> 
+<img src="../../independent-research/images/Counterfactual-Z*.png" width="400"> 
 
 where z is the encoding of fake image, E(X) is the encoding of real image.
