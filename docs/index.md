@@ -9,22 +9,22 @@ Classification. No "unknown" samples generated.
 #### [OpenMax](https://clojia.github.io/independent-research/2018-08-IR-Open-Max)
 OpenMax adapted EVT meta-recognition calibration in the penulimite layer of deep neural networks. For each instance, activation vector is revised to the sum of the product of its distance to the mean activation vectors (MAV) of each class. Then sent to softmax layer, which computes:
 
-<img src="../../independent-research/images/openmax.png" width="400"> 
+<img src="../../independent-research/images/openmax.png" width="250"> 
 
 #### [II-loss](https://clojia.github.io/independent-research/2018-08-IR-Open-Set-Recognition)
 ii-loss function was propsed in order to maximize the distance between different classes (inter class separation) and minimize distance of an instance from its class mean (intra class spread).
 
 - intra class spread
 
-<img src="../../independent-research/images/iiloss_intra.png" width="400"> 
+<img src="../../independent-research/images/iiloss_intra.png" width="250"> 
 
 - inter class spread
 
-<img src="../../independent-research/images/iiloss_inter.png" width="400"> 
+<img src="../../independent-research/images/iiloss_inter.png" width="250"> 
 
 - ii-loss
 
-<img src="../../independent-research/images/iiloss.png" width="400"> 
+<img src="../../independent-research/images/iiloss.png" width="300"> 
 
 #### [OSNN](https://clojia.github.io/independent-research/2018-10-IR-NNDR)
 
