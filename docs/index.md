@@ -6,9 +6,9 @@ Open set recognition: Using K classes labels identify K+1 classes (1 as unknown)
 
 ### non-Generative Model
 Classification. No "unknown" samples generated.
-#### OpenMax
-#### II-loss
-#### OSNN
+#### [OpenMax](https://clojia.github.io/independent-research/2018-08-IR-Open-Max)
+#### [II-loss](https://clojia.github.io/independent-research/2018-08-IR-Open-Set-Recognition)
+#### [OSNN](https://clojia.github.io/independent-research/2018-10-IR-NNDR)
 
 
 
