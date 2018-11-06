@@ -7,10 +7,28 @@ Open set recognition: Using K classes labels identify K+1 classes (1 as unknown)
 ### non-Generative Model
 Classification. No "unknown" samples generated.
 #### [OpenMax](https://clojia.github.io/independent-research/2018-08-IR-Open-Max)
+OpenMax adapted EVT meta-recognition calibration in the penulimite layer of deep neural networks. For each instance, activation vector is revised to the sum of the product of its distance to the mean activation vectors (MAV) of each class. Then sent to softmax layer, which computes:
+
+<img src="../../independent-research/images/openmax.png" width="400"> 
+
 #### [II-loss](https://clojia.github.io/independent-research/2018-08-IR-Open-Set-Recognition)
+ii-loss function was propsed in order to maximize the distance between different classes (inter class separation) and minimize distance of an instance from its class mean (intra class spread).
+
+- intra class spread
+
+<img src="../../independent-research/images/iiloss_intra.png" width="400"> 
+
+- inter class spread
+
+<img src="../../independent-research/images/iiloss_inter.png" width="400"> 
+
+- ii-loss
+
+<img src="../../independent-research/images/iiloss.png" width="400"> 
+
 #### [OSNN](https://clojia.github.io/independent-research/2018-10-IR-NNDR)
 
-
+The paper introduced two open-set extentions for the NN classifier: Class Verification (CV), as OSNN_cv and Nearest Neighbour Distance Ratio (OSNN). The difference is OSNN is able to classify test samples faraway from training ones while OSNN_cv does not.
 
 ### Generative Model
 Generate samples for "unknown" class first, then do classification.
