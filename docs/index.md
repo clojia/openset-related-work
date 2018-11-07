@@ -81,6 +81,7 @@ where z is the encoding of fake image, E(X) is the encoding of real image.
 The paper marked unlabeled target samples as unknown, then mixed them with labeled source samples together to train a feature generator and a classifier. The objective functions look like:
 
 <img src="../../independent-research/images/OSDAB-classifier.png" width="200"> 
+
 <img src="../../independent-research/images/OSDAB-generator.png" width="200"> 
 
 The classifier attempts to minimize both loss function whereas the generator attempts to maximize the value of L_adv(x_t) to deceive the classifier, such that it can generator better features which would recognize "known" samples from unlabeled target samples.
