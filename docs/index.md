@@ -5,6 +5,7 @@ Open set recognition: Using K classes labels identify K+1 classes (1 as unknown)
 ## Solutions
 
 ### Selective Data
+Use less data than the whole training set.
 
 ### No Additional Data
 
