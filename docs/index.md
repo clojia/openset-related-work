@@ -4,7 +4,10 @@
 Open set recognition: Using K classes labels identify K+1 classes (1 as unknown).
 ## Solutions
 
-### non-Generative Model
+### Selective Data
+
+### No Additional Data
+
 Classification. No "unknown" samples generated.
 #### [OpenMax](https://clojia.github.io/independent-research/2018-08-IR-Open-Max)
 OpenMax adapted EVT meta-recognition calibration in the penulimite layer of deep neural networks. For each instance, activation vector is revised to the sum of the product of its distance to the mean activation vectors (MAV) of each class. Then sent to softmax layer, which computes:
@@ -30,7 +33,7 @@ ii-loss function was propsed in order to maximize the distance between different
 
 The paper introduced two open-set extentions for the NN classifier: Class Verification (CV), as OSNN_cv and Nearest Neighbour Distance Ratio (OSNN). The difference is OSNN is able to classify test samples faraway from training ones while OSNN_cv does not.
 
-### Generative Model
+### Generated Additional Data
 Generate samples for "unknown" class first, then do classification.
 #### [G-OpenMax](https://clojia.github.io/independent-research/2018-10-IR-G-OpenMax)
 Based on OpenMax and GANs, objective function as
@@ -72,3 +75,12 @@ And the goal is to generate synthetic images closed to the real image but not in
 <img src="../../independent-research/images/Counterfactual-Z*.png" width="400"> 
 
 where z is the encoding of fake image, E(X) is the encoding of real image.
+
+### Introduced Additional Data
+#### [Open Set Domain Adaptation by Backpropagation](https://clojia.github.io/independent-research/2018-11-IR-Open-Set-Domain-Adaptation-by-Backpropagation)
+The paper marked unlabeled target samples as unknown, then mixed them with labeled source samples together to train a feature generator and a classifier. The objective functions look like:
+
+<img src="../../independent-research/images/OSDAB-classifier.png" width="200"> 
+<img src="../../independent-research/images/OSDAB-generator.png" width="200"> 
+
+The classifier attempts to minimize both loss function whereas the generator attempts to maximize the value of L_adv(x_t) to deceive the classifier, such that it can generator better features which would recognize "known" samples from unlabeled target samples.
