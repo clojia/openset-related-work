@@ -77,6 +77,8 @@ And the goal is to generate synthetic images closed to the real image but not in
 where z is the encoding of fake image, E(X) is the encoding of real image.
 
 ### Introduced Additional Data
+Introduce some other data than training set (not generated ones), then do classification.
+
 #### [Open Set Domain Adaptation by Backpropagation](https://clojia.github.io/independent-research/2018-11-IR-Open-Set-Domain-Adaptation-by-Backpropagation)
 The paper marked unlabeled target samples as unknown, then mixed them with labeled source samples together to train a feature generator and a classifier. The objective functions look like:
 
