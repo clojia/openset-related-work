@@ -92,3 +92,20 @@ The paper marked unlabeled target samples as unknown, then mixed them with label
 <img src="../../independent-research/images/OSDAB-generator.png" width="200"> 
 
 The classifier attempts to minimize both loss function whereas the generator attempts to maximize the value of L_adv(x_t) to deceive the classifier, such that it can generator better features which would recognize "known" samples from unlabeled target samples.
+
+#### [Unseen Class Discovery in Open-world Classification](https://clojia.github.io/independent-research/2018-11-IR-Unseen-Class-Discovery-In-Open-World-Classification)
+The paper proposed a system which consists of three networks -- an Open Classification Network (OCN), a Pairwise Classification Network (PCN), an auto-encoder, which introduced unlabeled data in auto-encoder training to avoid overfitting.
+
+<img src="../../independent-research/images/UCD-graph.png" width="800"> 
+
+- OCN: 1-vs-rest classifiers for each seen class, using labeled data, and loss function looks like:
+
+<img src="images/UCD-OCN-loss.png" width="500"> 
+
+- PCN: pairwised training a binary (0 vs 1) classifier for all the seen samples. 1 as in same class, 0 as in different classes. PCN is used as distance function in clustering stage, and its loss function looks like:
+
+<img src="images/UCD-PCN-loss.png" width="500"> 
+
+- auto-encoder: trained by all unlabeled class examples. And loss function looks like:
+
+<img src="images/UCD-AE-loss.png" width="180"> 
