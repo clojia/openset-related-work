@@ -97,15 +97,3 @@ The classifier attempts to minimize both loss function whereas the generator att
 The paper proposed a system which consists of three networks -- an Open Classification Network (OCN), a Pairwise Classification Network (PCN), an auto-encoder, which introduced unlabeled data in auto-encoder training to avoid overfitting.
 
 <img src="../../independent-research/images/UCD-graph.png" width="800"> 
-
-- OCN: 1-vs-rest classifiers for each seen class, using labeled data, and loss function looks like:
-
-<img src="images/UCD-OCN-loss.png" width="500"> 
-
-- PCN: pairwised training a binary (0 vs 1) classifier for all the seen samples. 1 as in same class, 0 as in different classes. PCN is used as distance function in clustering stage, and its loss function looks like:
-
-<img src="images/UCD-PCN-loss.png" width="500"> 
-
-- auto-encoder: trained by all unlabeled class examples. And loss function looks like:
-
-<img src="images/UCD-AE-loss.png" width="180"> 
