@@ -133,6 +133,6 @@ The paper proposed a system which consists of three networks -- an Open Classifi
 
 <img src="../../independent-research/images/UCD-graph.png" width="800"> 
 
-#### [Unseen Class Discovery in Open-world Classification]
+#### [Unseen Class Discovery in Open-world Classification](https://clojia.github.io/independent-research/2018-11-IR-ODN)
 
 Manual labeled unknown data is used in Open Deep Network (ODN). It introduces multiclass triplet thresholds to identify new categories: accept threshold, reject threshold and distance-threshold. Specifically, a samplewould be accepted as a labeled class if and only if the index of its top confidence value is greater than accept threshold. A sample would be considered as unknown if all the confidence values are below reject threshold. For samples between accept threshold and reject threshold, they would also be accepted as a labeled class if the distance between top and second maximal confidence values is large than the distance-threshold.
