@@ -34,6 +34,19 @@ ii-loss function was propsed in order to maximize the distance between different
 
 The paper introduced two open-set extentions for the NN classifier: Class Verification (CV), as OSNN_cv and Nearest Neighbour Distance Ratio (OSNN). The difference is OSNN is able to classify test samples faraway from training ones while OSNN_cv does not.
 
+#### [Distribution Networks](https://clojia.github.io/independent-research/2018-12-IR-Distribution-Networks)
+The paper proposed distribution networks for open set learning, which can further recognize different novel classes rather than just one unknown class. It assumes every class follows a distinctive Gaussian distribution, thus likelihood was used in objective function. Meanwhile, to avoid imbalance class problem, the negative mean log likelihood was used for each class, and the final loss function looks like:
+
+<img src="../../independent-research/images/DN-loss.png" width="300"> 
+
+Where p_k denotes the Gaussian probability density function:
+
+<img src="../../independent-research/images/DN-p.png" width="350"> 
+
+
+For each known class, If a test sample not belong any of the seen class, then the system would generate a new distribution for the novel class, whose parameters are estimated by a transfer strategy in validation process.
+
+
 ### Generated Additional Data
 Generate samples for "unknown" class first, then do classification.
 #### [G-OpenMax](https://clojia.github.io/independent-research/2018-10-IR-G-OpenMax)
@@ -77,6 +90,28 @@ And the goal is to generate synthetic images closed to the real image but not in
 
 where z is the encoding of fake image, E(X) is the encoding of real image.
 
+
+#### [GAN-MDFM](https://clojia.github.io/independent-research/2018-12-IR-GAN-MDFM)
+The paper presented a new method to generate fake date in unknown class in generative adversarial networks(GANs) framework for open set recognition problem. The framework consists of one generator, one classifier, one feature extractor and two autoencoders who sharing their parameters. The classifier measures uncertainty about positive data and generated data. And its objective function looks like:
+
+<img src="../../independent-research/images/MDAD-classifier.png" width="230"> 
+
+where H(p_c(y||x)) is the entropy of the membership probability.
+
+The system intends to generate fake data close to feature space of positive data,
+thus the objective function looks like 
+
+<img src="../../independent-research/images/MDAE-generator.png" width="300"> 
+
+Being different from vanilla G, who models the distribution of known classes, the generator here models the distribution m away from that of known classes.
+
+<img src="../../independent-research/images/MDAE-autoencoder.png" width="300"> 
+
+M(.) is introduced marginal denoising autoencoder (MADE) which “tries to model the noisy distribution of known classes on the feature space” of the classifier. And instead of adversarial loss, the objective function of autoencoder looks like:
+where n(.) is corruption function and m is a hyper-parameter to set the margin.
+
+
+
 ### Introduced Additional Data
 Introduce some other data than training set (not generated ones), then do classification.
 
@@ -97,3 +132,7 @@ The classifier attempts to minimize both loss function whereas the generator att
 The paper proposed a system which consists of three networks -- an Open Classification Network (OCN), a Pairwise Classification Network (PCN), an auto-encoder, which introduced unlabeled data in auto-encoder training to avoid overfitting.
 
 <img src="../../independent-research/images/UCD-graph.png" width="800"> 
+
+#### [Unseen Class Discovery in Open-world Classification]
+
+Manual labeled unknown data is used in Open Deep Network (ODN) proposed by Shi et al. [10]. It introduces multiclass triplet thresholds to identify new categories: accept threshold, reject threshold and distance-threshold. Specifically, a samplewould be accepted as a labeled class if and only if the index of its top confidence value is greater than accept threshold. A sample would be considered as unknown if all the confidence values are below reject threshold. For samples between accept threshold and reject threshold, they would also be accepted as a labeled class if the distance between top and second maximal confidence values is large than the distance-threshold.
