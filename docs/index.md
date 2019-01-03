@@ -96,7 +96,7 @@ The paper presented a new method to generate fake date in unknown class in gener
 
 <img src="../../independent-research/images/MDAD-classifier.png" width="230"> 
 
-where H(p_c(y||x)) is the entropy of the membership probability.
+where H(p_c(y\|x)) is the entropy of the membership probability.
 
 The system intends to generate fake data close to feature space of positive data,
 thus the objective function looks like 
