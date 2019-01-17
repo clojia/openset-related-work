@@ -46,6 +46,36 @@ Where p_k denotes the Gaussian probability density function:
 
 For each known class, If a test sample not belong any of the seen class, then the system would generate a new distribution for the novel class, whose parameters are estimated by a transfer strategy in validation process.
 
+#### [RLCN](https://clojia.github.io/independent-research/2019-01-IR-RLCN)
+The paper proposed a pairwise-constraint loss(PCL) function to achieve "intra-class compactness" and "inter-clas separation" in order to address openset recognition problem. They also developed a two-channel co-representation framework to detect novel class over time.
+
+The overview of the RLCN framework looks like:
+
+<img src="../../independent-research/images/RCLN-Framework.png" width="400"> 
+
+The paper proposed a pairwise constrain loss which looks like 
+
+<img src="../../independent-research/images/RCLN-comparison.png" width="500"> 
+
+
+tao is a margin value and gamma is a constant range. The relationship between distance of two instances, tao and gamma looks like:
+
+<img src="../../independent-research/images/RCLN-PC.png" width="200"> 
+
+S_i,j measures the similarity between instances i and j, if i and j are similar, S_i, j = 1. Otherwise, if i and j are dissimilar, S_i, j = -1.
+The equation denotes that the inter-class distances should be at least (gammar + tao), and that for intra-class should be at most (tao - gammar).
+
+To complete pairwise constrain, the paper also added an frobenius regularization term in order to avoid overfitting:
+
+<img src="../../independent-research/images/RCLN-PCL.png" width="350"> 
+
+The model also applied binary classification error(BCE) at the final output layer, which looks like
+
+<img src="../../independent-research/images/RCLN-BCE.png" width="350"> 
+
+And the overall objective function of the network looks:
+
+<img src="../../independent-research/images/RCLN-loss.png" width="250"> 
 
 ### Generated Additional Data
 Generate samples for "unknown" class first, then do classification.
