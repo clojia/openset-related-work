@@ -181,7 +181,7 @@ The paper also used maximum softmax probabilitybaseline dectector (cross-entropy
 
 #### [Objectosphere Loss](https://clojia.github.io/independent-research/2019-01-IR-Objectosphere)
 
-The proposed method reduced the deep feature maginitude (||F(x)||) and maximize entropy of the softmax scores of unknown sample to separate them from known samples.
+The proposed method reduced the deep feature maginitude (\|\|F(x)\|\|) and maximize entropy of the softmax scores of unknown sample to separate them from known samples.
 
 - Entropic Open-Set Loss
 
