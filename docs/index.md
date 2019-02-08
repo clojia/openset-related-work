@@ -166,3 +166,58 @@ The paper proposed a system which consists of three networks -- an Open Classifi
 #### [Unseen Class Discovery in Open-world Classification](https://clojia.github.io/independent-research/2018-11-IR-ODN)
 
 Manual labeled unknown data is used in Open Deep Network (ODN). It introduces multiclass triplet thresholds to identify new categories: accept threshold, reject threshold and distance-threshold. Specifically, a samplewould be accepted as a labeled class if and only if the index of its top confidence value is greater than accept threshold. A sample would be considered as unknown if all the confidence values are below reject threshold. For samples between accept threshold and reject threshold, they would also be accepted as a labeled class if the distance between top and second maximal confidence values is large than the distance-threshold.
+
+
+#### [Outlier Exposure](https://clojia.github.io/independent-research/2019-01-IR-OE)
+
+OE borrowed data from other dataset to be "out-of-distribution" (OOD), denoted as D_out. Meanwhile target samples as "in-distribution", marked as D_in. Then the model is trained to "discover signals and learn heuristics to detect" which dataset a query is sampled from.
+
+Given a model f and the original learning objective L, the objective function of OE looks like
+
+<img src="../../independent-research/images/OE.png" width="400"> 
+
+D_out_OE is outlier explosure dataset. The equation indicates the model tries to minimize the objective L for data from "in-distribution" (L) and "out-of-distribution" (L_OE).
+The paper also used maximum softmax probabilitybaseline dectector (cross-entropy) for L_OE. And when labels are not available, L_OE was set to a margin ranking loss on the log probabilities f(x') and f(x).
+
+#### [Objectosphere Loss](https://clojia.github.io/independent-research/2019-01-IR-Objectosphere)
+
+The proposed method reduced the deep feature maginitude (||F(x)||) and maximize entropy of the softmax scores of unknown sample to separate them from known samples.
+
+- Entropic Open-Set Loss
+
+Enptropic open-set loss looks like 
+
+<img src="../../independent-research/images/objectosphere-enptropic.png" width="400"> 
+
+The idea is maximum entorpy when an input is unknown, which in hence should uniform probabilities over the known classes.
+
+Compared with softmax and background method, we can see that unknown samples result in smaller output probabilities when usingobjectosphere loss.
+
+<img src="../../independent-research/images/objectosphere-responses.png" width="700"> 
+
+- Objectoshpere Loss
+
+To further separate known and unknown samples, the paper pushed knownsamples into the "Objectosphere" where they have large feature magnitude and low entropy. And objectosphere loss is defined as
+
+<img src="../../independent-research/images/objectosphere-loss.png" width="400"> 
+
+It penalizes the known classes if their feature maginitude is inside epsilon and unknown classes if their magnitude is greater than zero.
+
+<img src="../../independent-research/images/objectosphere-deep-feature=magnitudes.png" width="700"> 
+
+#### [Deep Feature for One-Class Classification](https://clojia.github.io/independent-research/2019-02-IR-DOC)
+The overview of proposed method looks like 
+
+<img src="../../independent-research/images/OC-overview.png" width="400"> 
+
+where g is feature extraction networks and h_c is classification networks. And the training and testing frameworks look like:
+
+<img src="../../independent-research/images/OC-train.png" width="600"> 
+
+Reference network and secondary network are structually identical and also shared weights. l_D is the loss function (discriptive loss: cross-entropy) for reference dataset to distinguish different classes.
+l_C is the loss function (compactness loss) for second network to make samples from same class more compact. They used cross-entropy as discriptive loss here and compactness loss looks like:
+
+<img src="../../independent-research/images/OC-compact.png" width="150"> 
+
+which is the average Euclidean distance between give sample and the rest of samples.
+
